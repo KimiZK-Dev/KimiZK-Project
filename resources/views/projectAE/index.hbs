@@ -1,0 +1,41 @@
+<div class="mainGrid container d-grid gap-4 z-0 mt-3">
+	{{#each item}}
+		<div class="rounded-4 border bg-card shadow-sm p-3">
+			<div class="eleImg">
+				<img
+					draggable="false"
+					alt="{{this.slug}}"
+					class="rounded-4"
+					loading="lazy"
+					decoding="async"
+					src="{{this.preview}}"
+					style="color: transparent; width: 100%; height: 250px; overflow: hidden;"
+				/>
+			</div>
+			<div class="eleInfo mt-3">
+				<h4>{{this.name}}</h4>
+				<p>{{this.desc}}</p>
+			</div>
+			<div class="eleLinks d-flex justify-content-between">
+				<a class="linked linkView" href="projectAE/view/{{this.slug}}">
+					<button class="d-flex align-items-center btn btn-warning">
+						<span class="me-1">View more</span>
+						<i class="fa-sharp fa-solid fa-eye"></i>
+					</button>
+				</a>
+				<a class="linked linkDown" href="#">
+					<button class="d-flex align-items-center btn btn-primary">
+						<span class="me-1">Download</span>
+						<i class="fa-solid fa-download"></i>
+					</button>
+				</a>
+			</div>
+		</div>
+	{{/each}}
+</div>
+<style>
+	.mainGrid{ grid-template-columns: repeat(auto-fill, 300px); justify-content:
+	center; }; @media screen and (max-width: 991px){ .eleLinks{ display: grid
+	!important; grid-template-columns: repeat(auto-fill, 130px); } }
+
+</style>

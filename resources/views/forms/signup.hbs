@@ -1,0 +1,68 @@
+<form
+	class="container form-login mt-4"
+	method="POST"
+	action="/forms/auth/signup"
+>
+	<div class="container text-center">
+		<h1>SIGN UP</h1>
+		<a href="login">Login</a>
+	</div>
+
+	<div class="mb-3">
+		<label for="userName" class="form-label">User Name</label>
+		<input
+			type="text"
+			class="form-control"
+			id="userName"
+			name="userName"
+			autocomplete="username"
+		/>
+	</div>
+
+	<div class="mb-3">
+		<label for="fullName" class="form-label">Full Name</label>
+		<input type="text" class="form-control" id="fullName" name="fullName" />
+	</div>
+
+	<div class="mb-3">
+		<label for="email" class="form-label">Email</label>
+		<input type="email" class="form-control" id="email" name="email" />
+	</div>
+
+	<div class="mb-3">
+		<label for="phone" class="form-label">Phone</label>
+		<input type="number" class="form-control" id="phone" name="phone" />
+	</div>
+
+	<div class="mb-3">
+		<label for="password" class="form-label">Password</label>
+		<input
+			type="password"
+			class="form-control"
+			id="password"
+			name="password"
+			autocomplete="new-password"
+		/>
+	</div>
+
+	<div class="mb-3 form-check">
+		<input
+			type="checkbox"
+			class="form-check-input"
+			id="checkBox"
+			name="checkBox"
+		/>
+		<label class="form-check-label" for="checkBox">
+			I agree to the
+			<a href="/docs/terms">terms</a>
+			and
+			<a href="/docs/policies">policies</a>
+			offered by the service</label>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<style>
+	.form-check-label, .form-check-input { cursor: pointer; } .form-login {
+	user-select: none; margin-bottom: 60px }
+</style>

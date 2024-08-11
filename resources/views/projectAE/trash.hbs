@@ -1,0 +1,168 @@
+<form
+	method="POST"
+	action="/projectAE/trash/action-form"
+	class="container-lg user-select-none"
+	name="container-form"
+>
+	<div class="nameTable mb-3">
+		<a href="/projectAE/manage">
+			<i class="fa-regular fa-door-open"></i>
+			Back to Manage
+		</a>
+		<p>Count: {{count}}</p>
+		<h2>Trash - Project AE</h2>
+	</div>
+
+	<div class="selection d-flex align-items-center mb-3">
+		<div class="form-check me-3">
+			<label for="checkedAll">Select all</label>
+			<input
+				class="form-check-input"
+				type="checkbox"
+				value="{{this._id}}"
+				id="checkedAll"
+			/>
+		</div>
+		<select
+			class="form-select form-select-sm w-25 me-3"
+			name="action"
+			required
+		>
+			<option value="" selected>------- Select your option -------</option>
+			<option value="restore">Restore</option>
+			<option value="delete">Delete</option>
+		</select>
+		<button
+			type="submit"
+			class="submitBtn btn btn-primary btn-sm disabled"
+		>Submit</button>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Select</th>
+				<th scope="col">ID</th>
+				<th scope="col">
+					Name Project
+					{{{sortable "name" sort}}}
+				</th>
+				<th>
+					Time Remove
+					{{{sortable "deletedAt" sort}}}
+				</th>
+				<th scope="col">Preview</th>
+				<th scope="col">Operation</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each items}}
+				<tr>
+					<td>
+						<div class="form-check">
+							<input
+								class="form-check-input checkedItems"
+								type="checkbox"
+								name="itemIDs"
+								value="{{this._id}}"
+							/>
+						</div>
+					</td>
+					<th scope="row">{{this.projectID}}</th>
+					<td>
+						<textarea readonly>{{this.name}}</textarea>
+					</td>
+					<td>
+						<textarea readonly>{{time this.deletedAt}}</textarea>
+					</td>
+					<td>
+						<div class="picPre">
+							<img src="{{this.preview}}" alt="" />
+						</div>
+					</td>
+					<td>
+						<a
+							href="trash/restore/{{this._id}}"
+							class="btn btn-warning btn-sm btnRes"
+							data-id="{{this._id}}"
+						><i
+								class="fa-solid fa-trash-undo"
+								style="color: #ffffff;font-size:14.5px"
+							></i></a>
+						<a
+							href="trash/delete/{{this._id}}"
+							class="btn btn-danger btn-sm btnDel"
+							data-bs-toggle="modal"
+							data-bs-target="#notiDelete"
+							data-id="{{this._id}}"
+						><i class="fa-solid fa-trash-xmark"></i></a>
+					</td>
+				</tr>
+			{{else}}
+				<tr>
+					<td colspan="7" class="text-center">Khong co du lieu nao bi
+						xoa. Quay ve trang quan li
+						<a href="/projectAE/manage">Tai day!</a></td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</form>
+
+<div
+	class="modal fade"
+	id="notiDelete"
+	tabindex="-1"
+	aria-labelledby="notiDeletelLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Delete Project</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body">
+				<span>Are you sure you want to delete forever this project!?</span>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-info"
+					data-bs-dismiss="modal"
+				>Cancel</button>
+				<button
+					id="btn-delete-item"
+					type="button"
+					class="btn btn-danger"
+				>Delete</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form method="POST" name="delete-item-form"></form>
+<form method="POST" name="restore-item-form"></form>
+
+<style>
+	.modal-title { font-weight: bolder; } .form-select, .form-check label, input
+	{ cursor: pointer; } textarea { border: 2px solid #ccc; box-sizing:
+	border-box; text-align: center; border-radius: 4px; padding: 5px 10px;
+	resize: none; height: 38px; }
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded",function(){$(".btnDel");var
+	e,t=$(".btnRes"),c=$(".submitBtn"),o=$("#checkedAll"),n=$(".checkedItems"),d=document.forms["delete-item-form"],l=document.forms["restore-item-form"];function
+	s(){let
+	e=$(".checkedItems:checked").length;console.log(e),e>0?c.removeClass("disabled"):c.addClass("disabled")}document.forms["container-form"],$("#notiDelete").on("show.bs.modal",t=>{let
+	c=$(t.relatedTarget);e=c.data("id")}),$("#btn-delete-item").on("click",t=>{d.action="/projectAE/trash/delete/"+e+"?_method=DELETE",d.submit()}),t.click(function(e){e.preventDefault();let
+	t=$(this).data("id");l.action=`/projectAE/trash/restore/${t}?_method=PATCH`,l.submit()}),o.change(function(){let
+	e=$(this).prop("checked");n.prop("checked",e),s()}),n.change(function(){let
+	e=$(".checkedItems:checked").length===n.length;o.prop("checked",e),s()})});
+</script>

@@ -1,0 +1,41 @@
+<h2 class="main-title">{{title}}</h2>
+
+<div class="container">
+	<div class="bg bg-info rounded-3 overflow-hidden">
+		<div class="d-flex align-items-center justify-content-between">
+			<a
+				draggable="false"
+				class="imgProject"
+				href="https://drive.google.com/file/d/1DJvV5wvWjoEp3Y1uPF4keilvjaDC5xUD/view"
+				target="_blank"
+			>
+				<img draggable="false" src="{{test.preview}}" alt="" />
+			</a>
+
+			<div class="info">
+
+				<h3>{{test.name}}</h3>
+				<h5>{{test.description}}</h5>
+				<p>Post User • {{updateTime}}</p>
+				<a
+					draggable="false"
+					href="#"
+					class="btn btn-primary text-light"
+				>Download</a>
+				<a
+					draggable="false"
+					href="#"
+					class="btn btn-warning text-light"
+				>Preview</a>
+
+			</div>
+
+			<div class="me-3"></div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.imgProject{ width: 250px; height: 250px; overflow: hidden; img{ object-fit:
+	cover; width: 100%; height: 100%; } }
+</style>

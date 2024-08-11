@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+  display: none; }
+
+@font-face {
+  font-family: "ProximaSoft";
+  src: url("../assets/fonts/proxima_soft_bold.otf") format("opentype"); }
+
+* {
+  font-family: "ProximaSoft", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none; }
+
+.marginNavbar {
+  padding: 45px; }
+
+.picPre {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  overflow: hidden; }
+  .picPre img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%; }

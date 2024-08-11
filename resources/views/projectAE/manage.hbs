@@ -1,0 +1,154 @@
+<form
+	method="POST"
+	action="/projectAE/manage/action-form"
+	class="container-lg user-select-none"
+>
+	<div class="namePage mb-3">
+		<a href="/projectAE/trash">
+			<i class="fa-sharp fa-regular fa-trash-list"></i>
+			Go to Trash
+		</a>
+		<p>Count: {{count}}</p>
+		<h2>Manage - Project AE</h2>
+	</div>
+
+	<div class="selection d-flex align-items-center mb-3">
+		<div class="form-check me-3">
+			<label for="checkedAll">Select all</label>
+			<input
+				class="form-check-input"
+				type="checkbox"
+				value="{{this._id}}"
+				id="checkedAll"
+			/>
+		</div>
+		<select class="form-select form-select-sm w-25 me-3" name="action">
+			<option value="remove" selected>Remove</option>
+		</select>
+		<button
+			type="submit"
+			class="submitBtn btn btn-primary btn-sm disabled"
+		>Submit</button>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Select</th>
+				<th scope="col">ID</th>
+				<th scope="col">
+					Name Project
+					{{{sortable "name" sort}}}
+				</th>
+				<th>
+					Time Update
+					{{{sortable "updatedAt" sort}}}
+				</th>
+				<th scope="col">Preview</th>
+				<th scope="col">Operation</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each items}}
+				<tr>
+					<td>
+						<div class="form-check">
+							<input
+								class="form-check-input checkedItems"
+								type="checkbox"
+								name="itemIDs"
+								value="{{this._id}}"
+							/>
+						</div>
+					</td>
+					<th scope="row">{{this.projectID}}</th>
+					<td>{{this.name}}</td>
+					<td>
+						<textarea readonly>{{time this.updatedAt}}</textarea>
+					</td>
+					<td>
+						<div class="picPre">
+							<img
+								draggable="false"
+								src="{{this.preview}}"
+								alt=""
+							/>
+						</div>
+					</td>
+					<td>
+						<a
+							href="edit/{{this._id}}"
+							class="btn btn-info btn-sm"
+						><i class="fa-solid fa-pen-to-square"></i></a>
+						<a
+							href="manage/remove/{{this._id}}"
+							class="btn btn-danger btn-sm"
+							data-bs-toggle="modal"
+							data-bs-target="#notiRemove"
+							data-id="{{this._id}}"
+						><i class="fa-solid fa-trash"></i></a>
+					</td>
+				</tr>
+			{{else}}
+				<tr>
+					<td colspan="6" class="text-center">
+						Khong co du lieu. Them du lieu
+						<a href="/projectAE/add">Tai day!</a>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</form>
+<div
+	class="modal fade"
+	id="notiRemove"
+	tabindex="-1"
+	aria-labelledby="notiRemovelLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Remove Project</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body">
+				<span>Are you sure you want to remove this project!?</span>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-info"
+					data-bs-dismiss="modal"
+				>Cancel</button>
+				<button
+					id="btn-remove-item"
+					type="button"
+					class="btn btn-danger"
+				>Remove</button>
+			</div>
+		</div>
+	</div>
+</div>
+<form method="POST" name="remove-item-form"></form>
+<style>
+	.modal-title { font-weight: bolder; } .form-select, .form-check label, input
+	{ cursor: pointer; } textarea { border: 2px solid #ccc; box-sizing:
+	border-box; text-align: center; border-radius: 4px; padding: 5px 10px;
+	resize: none; height: 38px; }
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded",function(){var
+	e,t=$(".submitBtn"),c=$("#checkedAll"),o=$(".checkedItems");document.forms["container-form"];var
+	n=document.forms["remove-item-form"];function d(){let
+	e=$(".checkedItems:checked").length;console.log(e),e>0?t.removeClass("disabled"):t.addClass("disabled")}$("#notiRemove").on("show.bs.modal",t=>{let
+	c=$(t.relatedTarget);e=c.data("id")}),$("#btn-remove-item").on("click",t=>{n.action="/projectAE/manage/remove/"+e+"?_method=DELETE",n.submit()}),c.change(function(){let
+	e=$(this).prop("checked");o.prop("checked",e),d()}),o.change(function(){let
+	e=$(".checkedItems:checked").length===o.length;c.prop("checked",e),d()})});
+</script>

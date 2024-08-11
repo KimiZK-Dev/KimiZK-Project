@@ -1,0 +1,44 @@
+<h2 class="main-title">{{title}}</h2>
+<div class="flex d-flex justify-content-center">
+	<form class="w-75" method="POST" action="update/{{item._id}}?_method=PUT">
+		<div class="mb-3">
+			<label for="name" class="form-label">Name Project</label>
+			<input
+				type="text"
+				class="form-control"
+				value="{{item.name}}"
+				id="name"
+				name="name"
+			/>
+		</div>
+		<div class="mb-3">
+			<label for="desc" class="form-label">Description</label>
+			<textarea
+				class="form-control"
+				id="desc"
+				name="desc"
+			>{{item.desc}}</textarea>
+		</div>
+		<div class="mb-3">
+			<label for="preview" class="form-label">Link Preview</label>
+			<input
+				type="url"
+				class="form-control"
+				value="{{item.preview}}"
+				id="preview"
+				name="preview"
+			/>
+		</div>
+		<div class="mb-3">
+			<label for="downLink" class="form-label">Link Download</label>
+			<input
+				type="url"
+				class="form-control"
+				value="{{item.downLink}}"
+				id="downLink"
+				name="downLink"
+			/>
+		</div>
+		<button type="submit" class="btn btn-primary">Update Project</button>
+	</form>
+</div>
