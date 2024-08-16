@@ -1,4 +1,4 @@
-import ContactController from "../apps/controllers/ContactController.js";
+import ContactController from "../apps/controllers/C/ContactController.js";
 import express from "express";
 
 const router = express.Router();

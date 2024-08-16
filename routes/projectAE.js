@@ -1,5 +1,5 @@
 import express from "express";
-import ProjectAEController from "../apps/controllers/ProjectAEController.js";
+import ProjectAEController from "../apps/controllers/P/ProjectAEController.js";
 
 const router = express.Router();
 

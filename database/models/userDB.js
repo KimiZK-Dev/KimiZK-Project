@@ -5,8 +5,9 @@ import AutoIncrement from "mongoose-sequence";
 const userSchema = new Schema(
 	{
 		userID: Number,
-		userName: { type: String, required: true, unique: true, trim: true },
-		fullName: { type: String, required: true, trim: true },
+		userName: { type: String, required: true, unique: true },
+		firstName: { type: String, required: true },
+		lastName: { type: String, required: true },
 		email: {
 			type: String,
 			required: true,
@@ -14,7 +15,7 @@ const userSchema = new Schema(
 			trim: true,
 			match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
 		},
-		phone: { type: String, required: true, trim: true },
+		phone: { type: String, required: true, unique: true, trim: true },
 		password: { type: String, required: true, maxLength: 1024 },
 		checkBox: { type: String },
 	},

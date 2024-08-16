@@ -1,14 +1,14 @@
-<section class="hero bg-primary py-5 rounded-top-5">
+<section class="hero bg-primary py-5 mt-4">
 	<div class="container w100">
 		<div class="title d-flex flex-column text-center text-light mb-4">
-			<h1 class="lh-1">TikTok Video Download</h1>
-			<h2 class="lh-1">Without Watermark. Fast. All devices</h2>
+			<h1 class="lh-1">TẢI VIDEO TIKTOK</h1>
+			<h2 class="lh-1">Không logo, hình mờ, watermark</h2>
 		</div>
-		<form class="d-flex justify-content-evenly">
+		<form class="d-flex justify-content-evenly" id="formDT" method="POST">
 			<div class="message"><div class="message-body"></div></div>
 			<div class="input-group w-75">
 				<input
-					placeholder="Paste TikTok link here"
+					placeholder="Dán link video/ảnh vào đây"
 					name="url"
 					id="url"
 					class="form-control"
@@ -20,18 +20,106 @@
 				<span class="btn btn-info" type="button">
 					<div class="btnPaste">
 						<i class="fa-solid fa-paste me-1"></i>
-						<span>Paste</span>
+						<span>Dán</span>
 					</div>
-					{{! <div class="btnClear">
-						<i class="fa-solid fa-xmark me-1"></i>
-						<span>Clear</span>
-					</div> }}
+					<div class="btnClear" style="display: none;">
+						<i class="fa-solid fa-delete-right me-1"></i>
+						<span>Xóa</span>
+					</div>
 				</span>
 			</div>
-			<button type="submit" class="btn btn btn-warning btnDown">
+			<button type="submit" class="btnDown btn btn btn-warning px-3">
 				<i class="fa-solid fa-down-to-bracket me-1"></i>
-				Download
+				Tải xuống
 			</button>
 		</form>
 	</div>
 </section>
+
+<section class="hero bg-primary py-5 mt-3 rounded-bottom-5">
+	<div class="container d-flex justify-content-around column-gap-5 w100">
+
+		<div
+			class="content bg-primary-subtle p-3 rounded d-flex flex-column"
+			style="height: auto !important;"
+		>
+			<h3 class="text-center"> Thông Tin </h3>
+			<hr class="my-1" />
+			<p>
+				<i class="fa-solid fa-clock"></i><span>Thời gian xử lí dữ liệu:
+					{{processedTime}}</span>
+			</p>
+			<hr class="mt-1" />
+			<p>
+				<i class="fa-solid fa-id-badge"></i><span>UserID:
+					{{userID}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-user"></i><span>Tài khoàn:
+					{{nickname}}
+				</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-subtitles"></i><span>Tiêu đề:
+					{{title}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-heart"></i><span>Số tim: {{hearts}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-comment"></i><span>Số bình luận:
+					{{comments}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-down"></i><span>Số lượt tải:
+					{{downloads}}
+				</span>
+			</p>
+			<p>
+				<i class="fa-duotone fa-solid fa-play"></i><span>Số lần phát:
+					{{plays}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-timer"></i><span>Thời lượng:
+					{{duration}}</span>
+			</p>
+			<p>
+				<i class="fa-solid fa-file"></i><span>Kích cỡ: {{size}}</span>
+			</p>
+
+		</div>
+
+		<div
+			class="media bg-primary-subtle rounded p-3"
+			style="height: auto !important;"
+		>
+			<div class="video">
+				<div class="preview rounded overflow-hidden">
+					<img src="{{preview}}" alt="This Preview Video(No Video)" />
+				</div>
+			</div>
+
+			<div class="pics d-grid">
+				{{#each images}}
+					<div class="pic overflow-hidden rounded z-0">
+						<a href="{{this}}" class="text-light py-1 px-2">Tải về</a>
+						<img src="{{this}}" alt="" />
+					</div>
+				{{/each}}
+			</div>
+
+			<div class="actions mt-3 d-flex justify-content-around w-100">
+				<a class="btn btn-primary" href="{{downlink}}">
+					<i class="fa-solid fa-download"></i>
+					Video
+				</a>
+				<a class="btn btn-primary" href="{{audio}}">
+					<i class="fa-solid fa-download"></i>
+					Audio
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="module" src="/tools/js/downtik.js"></script>

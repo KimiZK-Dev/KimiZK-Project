@@ -1,0 +1,113 @@
+<section class="mt-5 d-flex align-items-center justify-content-center">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<img
+					src="/images/bannerLogin.svg"
+					alt="image"
+					class="img-fluid"
+					draggable="false"
+				/>
+			</div>
+			<div class="col-md-6 contents">
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="mb-4 text-center">
+							<h1>
+								<i
+									class="fa-solid fa-right-to-bracket me-1 text-info-emphasis"
+								></i>
+								ĐĂNG NHẬP
+							</h1>
+							<p class="mb-4 text-body-secondary">Chào mừng! Đăng
+								nhập để khám phá và tận hưởng những tiện ích thú
+								vị chúng tôi đã chuẩn bị cho bạn nhé :3</p>
+						</div>
+						<form action="/forms/auth/signin" method="POST">
+							<div class="mb-3">
+								<label for="userName" class="form-label">Tài
+									Khoản</label>
+								<input
+									type="text"
+									class="form-control"
+									id="userName"
+									name="userName"
+									autocomplete="on"
+									placeholder="Email / Số điện thoại / Tên tài khoản"
+									required
+								/>
+							</div>
+
+							<div class="mb-3">
+								<label for="password" class="form-label">Mật
+									Khẩu</label>
+								<input
+									type="password"
+									class="form-control"
+									id="password"
+									name="password"
+									autocomplete="on"
+									placeholder="Mật khẩu"
+									required
+								/>
+							</div>
+
+							<div class="actions d-flex justify-content-between">
+								<div class="mb-3 form-check">
+									<input
+										type="checkbox"
+										class="form-check-input"
+										id="checkBox"
+										name="checkBox"
+									/>
+									<label
+										class="form-check-label"
+										for="checkBox"
+									>Nhớ về tôi!</label>
+								</div>
+
+								<a href="account/recovery">Quên mật khẩu?</a>
+							</div>
+
+							<button
+								type="submit"
+								class="btn btn-primary submitBtn w-100"
+							>Đăng Nhập</button>
+
+							<div class="split mt-3">
+								<span class="line"></span>
+								<h5>OR</h5>
+								<span class="line"></span>
+							</div>
+
+							<div
+								class="socialLogin d-flex justify-content-evenly align-items-center fs-2"
+							>
+								<a href="#" class="iconSocial facebook">
+									<img
+										src="/images/socials/fb.svg"
+										alt="Facebook"
+									/>
+								</a>
+								<a href="#" class="iconSocial github">
+									<img
+										src="/images/socials/git.svg"
+										alt="Github"
+									/>
+								</a>
+								<a href="#" class="iconSocial google">
+									<img
+										src="/images/socials/gg.svg"
+										alt="Google"
+									/>
+								</a>
+							</div>
+						</form>
+						<p class="text-center">Bạn chưa có tài khoản sao?
+							<a href="signup">Đăng ký</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

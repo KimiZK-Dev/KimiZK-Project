@@ -11,7 +11,7 @@ export const sortable = (field, sort) => {
 			nextType: "desc",
 		},
 		desc: {
-			icon: "fa-sharp-duotone fa-solid fa-sort fa-lg fa-fw ms-1",
+			icon: "fa-duotone fa-solid fa-sort fa-rotate-180 ms-1",
 			nextType: "asc",
 		},
 		asc: {

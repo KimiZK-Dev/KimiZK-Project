@@ -1,31 +1,43 @@
-import userDB from "../../database/models/userDB.js";
+import userDB from "../../../database/models/userDB.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { mutipleMGToObj } from "../../database/mongoose.js";
+import { mutipleMGToObj } from "../../../database/mongoose.js";
 
 class AuthController {
 	// [GET] /form/login
-	login(req, res, next) {
-		res.render("forms/login");
+	signin(req, res, next) {
+		res.render("forms/signin", {
+			css: "/css/forms.css",
+			title: "Sign In",
+		});
 	}
-
 	// [GET] /form/signup
 	signup(req, res, next) {
-		res.render("forms/signup");
+		res.render("forms/signup", {
+			css: "/css/forms.css",
+			title: "Sign Up",
+		});
 	}
 
 	// [POST] /form/login
-	async loginScript(req, res, next) {
-		const { userName, password } = req.body;
+	async signinScript(req, res, next) {
+		const { identifier, password } = req.body;
 		try {
-			const user = await userDB.findOne({ userName });
+			const user = await userDB.findOne({
+				$or: [
+					{ userName: identifier },
+					{ email: identifier },
+					{ phoneNumber: identifier },
+				],
+			});
+
 			if (!user) {
 				return res.status(404).send("User not found.");
 			}
 
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (isMatch) {
-				// Redirect or send a success response
+				// Redirect hoặc gửi phản hồi thành công
 				return res.send("Password is correct!");
 			} else {
 				return res.status(401).send("Invalid password.");
@@ -43,7 +55,8 @@ class AuthController {
 
 			const data = new userDB({
 				userName: req.body.userName,
-				fullName: req.body.fullName,
+				firstName: req.body.firstName,
+				lastName: req.body.lastName,
 				email: req.body.email,
 				phone: req.body.phone,
 				password: hashedPass,

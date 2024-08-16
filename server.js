@@ -6,7 +6,7 @@ import router from "./routes/router.js";
 import { fileURLToPath } from "url";
 import path from "path";
 import sortMW from "./apps/middlewares/sortMW.js";
-import * as handlebarsHelpers from "../sex/helpers/handlebars.js";
+import * as handlebarsHelpers from "./helpers/handlebars.js";
 
 const port = 3000 || process.env.PORT;
 const app = express();
@@ -14,6 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(methodOverride("_method"));
+app.use("/tools", express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

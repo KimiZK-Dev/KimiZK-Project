@@ -1,7 +1,7 @@
 class ContactController {
 	// [GET] /contact
 	async index(req, res) {
-		res.render("contact/", {
+		res.render("contact", {
 			css: "css/profile.css",
 			title: "Contact",
 		});

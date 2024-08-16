@@ -1,5 +1,5 @@
-import projectAEDB from "../../database/models/projectAEDB.js";
-import { mutipleMGToObj, mgToObj } from "../../database/mongoose.js";
+import projectAEDB from "../../../database/models/projectAEDB.js";
+import { mutipleMGToObj, mgToObj } from "../../../database/mongoose.js";
 
 class siteController {
 	// [GET]
