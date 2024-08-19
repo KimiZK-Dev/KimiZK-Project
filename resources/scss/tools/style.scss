@@ -1,0 +1,173 @@
+section {
+	margin-bottom: 31%;
+}
+
+.flip-card {
+	height: 300px;
+	perspective: 1000px;
+}
+
+.flip-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s ease;
+	transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+	transform: rotateY(-180deg);
+}
+
+.frontCard,
+.backCard {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.frontCard {
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+
+	.nameSocial,
+	.usage {
+		position: absolute;
+		background-color: #fff;
+		padding: 5px 15px;
+		margin: 0;
+	}
+
+	.nameSocial {
+		top: 0;
+		right: 0;
+		border-bottom-left-radius: 20px;
+	}
+
+	.usage {
+		bottom: 0;
+		left: 0;
+		padding: 5px 25px;
+		border-top-right-radius: 20px;
+	}
+}
+
+.backCard {
+	color: #000;
+	transform: rotateY(-180deg);
+}
+
+.d-grid {
+	grid-template-columns: repeat(auto-fill, 300px);
+}
+
+.button {
+	appearance: none;
+	border: none;
+	background: none;
+	color: #0f1923;
+	position: relative;
+	padding: 8px;
+	text-transform: uppercase;
+	font-size: 14px;
+	transition: all 0.15s ease;
+	outline: none;
+}
+
+.button::before,
+.button::after {
+	content: "";
+	display: block;
+	position: absolute;
+	right: 0;
+	left: 0;
+	height: calc(50% - 5px);
+	border: 1.5px solid #fff;
+	transition: all 0.15s ease;
+}
+
+.button::before {
+	top: 0;
+	border-bottom-width: 0;
+}
+
+.button::after {
+	bottom: 0;
+	border-top-width: 0;
+}
+
+.button:active::before,
+.button:active::after {
+	right: 3px;
+	left: 3px;
+}
+
+.button:active::before {
+	top: 3px;
+}
+
+.button:active::after {
+	bottom: 3px;
+}
+
+.button_lg {
+	display: block;
+	padding: 10px 20px;
+	color: #fff;
+	background-color: #0f1923;
+	overflow: hidden;
+	position: relative;
+}
+
+.button_lg::before,
+.button_lg::after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #0f1923;
+}
+
+.button_lg::before {
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 2px;
+}
+
+.button_lg::after {
+	right: 0;
+	bottom: 0;
+	width: 4px;
+	height: 4px;
+	transition: background-color 0.2s ease;
+}
+
+.button_sl {
+	position: absolute;
+	top: 0;
+	bottom: -1px;
+	left: -8px;
+	width: 0;
+	background-color: #ff4655;
+	transform: skew(-15deg);
+	transition: width 0.2s ease;
+}
+
+.button_text {
+	position: relative;
+}
+
+.button:hover .button_sl {
+	width: calc(100% + 15px);
+}
+
+.button:hover .button_lg::after {
+	background-color: #fff;
+}

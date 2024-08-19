@@ -10,17 +10,30 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  user-select: none; }
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; }
+
+body {
+  width: 100%;
+  background: linear-gradient(to bottom, #17889c 23%, #643775 95%); }
 
 .marginNavbar {
-  padding: 50px; }
+  padding: 60px; }
 
-.picPre {
-  height: 50px;
-  width: 50px;
-  border-radius: 5px;
-  overflow: hidden; }
-  .picPre img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%; }
+#snowflakeContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+
+.snowflake {
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 24px;
+  position: fixed;
+  color: #fff;
+  user-select: none;
+  z-index: 1000; }

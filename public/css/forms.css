@@ -1,12 +1,12 @@
 .split {
   justify-content: center;
   align-items: center;
-  white-space: nowrap;
   display: flex;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  color: #fff; }
   .split .line {
-    background-color: black;
+    background-color: #ffffff8e;
     border-radius: 500px;
     margin-inline: 15px;
     height: 2px;
@@ -14,15 +14,25 @@
 
 .iconSocial {
   padding: 10px;
-  background-color: #fff;
   border-radius: 50%;
   transition: all 0.3s ease 0s; }
 
 .iconSocial:hover {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-  color: #fff;
-  transform: translateY(-7px); }
+  transform: translateY(-8px); }
 
 .form-check-label,
 .form-check-input {
   cursor: pointer; }
+
+section {
+  margin-bottom: 10%; }
+
+label,
+.fa-solid,
+.contentSignUp p,
+.col-md-8 p {
+  color: #eeeeee !important; }
+
+h1 {
+  color: #fff !important; }

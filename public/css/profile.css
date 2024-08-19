@@ -1,14 +1,17 @@
 body {
   min-height: 100vh;
   padding: 0;
-  background-image: linear-gradient(180deg, rgba(15, 15, 15, 0.6), #0f0f0f), url("../assets/images/background.jpg");
+  background-image: linear-gradient(180deg, rgba(15, 15, 15, 0.6), #0f0f0f), url("../assets/images/background.jpg") !important;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   cursor: url("https://sweezy-cursors.com/wp-content/uploads/cursor/sanrio-cinnamoroll-strawberry/sanrio-cinnamoroll-strawberry-cursor-32x32.png"), default !important; }
 
-h2, h3, p, span {
+h2,
+h3,
+p,
+span {
   color: #fff !important; }
 
 .headerProfile {
@@ -125,7 +128,8 @@ h2, h3, p, span {
   top: 0;
   left: 0; }
 
-.popupNoti, .popupBadge {
+.popupNoti,
+.popupBadge {
   background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -134,28 +138,37 @@ h2, h3, p, span {
   align-items: center;
   position: fixed;
   width: 360px; }
-  .popupNoti .logo, .popupBadge .logo {
+  .popupNoti .logo,
+  .popupBadge .logo {
     width: 35px; }
-    .popupNoti .logo img, .popupBadge .logo img {
+    .popupNoti .logo img,
+    .popupBadge .logo img {
       object-fit: cover;
       width: 100%;
       height: 100%; }
-  .popupNoti .description, .popupBadge .description {
+  .popupNoti .description,
+  .popupBadge .description {
     color: #d1d1d1 !important; }
-  .popupNoti .split, .popupBadge .split {
+  .popupNoti .split,
+  .popupBadge .split {
     background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     height: 1px;
     width: 100%; }
-  .popupNoti .button, .popupBadge .button {
+  .popupNoti .button,
+  .popupBadge .button {
     cursor: url("https://sweezy-cursors.com/wp-content/uploads/cursor/sanrio-cinnamoroll-strawberry/sanrio-cinnamoroll-strawberry-pointer-32x32.png"), pointer !important;
     font-size: 15px;
     padding: 12px 0;
     margin: 0; }
-    .popupNoti .button:hover, .popupBadge .button:hover {
+    .popupNoti .button:hover,
+    .popupBadge .button:hover {
       background: #ffffff2a; }
 
-.border-avatar img, .card, .logo, .button {
+.border-avatar img,
+.card,
+.logo,
+.button {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

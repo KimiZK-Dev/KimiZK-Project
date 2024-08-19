@@ -7,14 +7,14 @@ class AuthController {
 	// [GET] /form/login
 	signin(req, res, next) {
 		res.render("forms/signin", {
-			css: "/css/forms.css",
+			css: ["/css/forms.css"],
 			title: "Sign In",
 		});
 	}
 	// [GET] /form/signup
 	signup(req, res, next) {
 		res.render("forms/signup", {
-			css: "/css/forms.css",
+			css: ["/css/forms.css"],
 			title: "Sign Up",
 		});
 	}

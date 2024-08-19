@@ -92,3 +92,31 @@
 .link:hover {
 	color: #0dcaf0;
 }
+
+.form-list-actions-user {
+	display: none;
+	background: #0dcaf0;
+	z-index: 9999;
+	position: absolute;
+	inset: 0px 0px auto auto;
+	transform: translateX(-10%) translateY(75px);
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
+}
+
+.info-user {
+	.idUser {
+		opacity: 0.8;
+		font-size: small;
+	}
+}
+.profile {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+
+li {
+	padding: 4px 20px;
+}

@@ -1,6 +1,14 @@
 import handleDT from "../../middlewares/handleDT.js";
 
 class ToolsController {
+	// [GET] /tools
+	index(req, res) {
+		res.render("tools/", {
+			css: ["/css/tools/style.css"],
+			title: "Tools Page",
+		});
+	}
+
 	// [GET] /tools/downtik
 	downtik(req, res) {
 		res.render("tools/downtik");
@@ -17,7 +25,7 @@ class ToolsController {
 		}
 
 		const commonData = {
-			css: "/css/downtik.css",
+			css: ["/css/tools/downtik.css"],
 			processedTime: result.processed_time + "s",
 			userID: data.author.unique_id,
 			nickname: data.author.nickname,
@@ -48,11 +56,6 @@ class ToolsController {
 	// [GET] /tools/upscale
 	upscale(req, res) {
 		res.render("tools/upscale");
-	}
-
-	// [GET] /tools
-	index(req, res) {
-		res.render("tools/");
 	}
 }
 

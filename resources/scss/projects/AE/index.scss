@@ -1,0 +1,49 @@
+.mainGrid {
+	grid-template-columns: repeat(auto-fill, 300px);
+	justify-content: center;
+}
+@media screen and (max-width: 991px) {
+	.eleLinks {
+		display: grid !important;
+		grid-template-columns: repeat(auto-fill, 130px);
+	}
+}
+
+.picPre {
+	height: 50px;
+	width: 50px;
+	border-radius: 5px;
+	overflow: hidden;
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.namePage {
+	p,
+	a {
+		color: #fff;
+	}
+	h2 {
+		color: rgb(207, 244, 252);
+	}
+}
+
+.container-lg {
+	margin-top: 30px;
+}
+
+label[for="checkedAll"] {
+	color: rgb(207, 244, 252);
+}
+
+.namePage a:hover {
+	color: #c5c5c5;
+}
+
+table {
+	margin-bottom: 32% !important;
+}

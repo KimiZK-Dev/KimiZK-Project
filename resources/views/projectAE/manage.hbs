@@ -1,8 +1,4 @@
-<form
-	method="POST"
-	action="/projectAE/manage/action-form"
-	class="container-lg user-select-none"
->
+<form method="POST" action="/projectAE/manage/action-form" class="container-lg">
 	<div class="namePage mb-3">
 		<a href="/projectAE/trash">
 			<i class="fa-sharp fa-regular fa-trash-list"></i>
@@ -31,7 +27,7 @@
 		>Submit</button>
 	</div>
 
-	<table class="table">
+	<table class="table table-striped table-info rounded-3 overflow-hidden">
 		<thead>
 			<tr>
 				<th scope="col">Select</th>
@@ -62,7 +58,9 @@
 						</div>
 					</td>
 					<th scope="row">{{this.projectID}}</th>
-					<td>{{this.name}}</td>
+					<td>
+						<textarea readonly>{{this.name}}</textarea>
+					</td>
 					<td>
 						<textarea readonly>{{time this.updatedAt}}</textarea>
 					</td>

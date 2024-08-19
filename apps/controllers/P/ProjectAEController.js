@@ -6,6 +6,7 @@ class siteController {
 	async index(req, res, next) {
 		try {
 			res.render("projectAE/", {
+				css: ["/css/projects/AE/index.css"],
 				item: mutipleMGToObj(await projectAEDB.find({})),
 			});
 		} catch (err) {
@@ -42,6 +43,10 @@ class siteController {
 			res.render("projectAE/manage", {
 				items: mutipleMGToObj(items),
 				count,
+				css: [
+					"/css/projects/AE/manage.css",
+					"/css/projects/AE/index.css",
+				],
 			});
 		} catch (err) {
 			res.status(400).json({ error: "ERROR!!!" });
@@ -64,6 +69,10 @@ class siteController {
 			res.render("projectAE/trash", {
 				items: mutipleMGToObj(items),
 				count,
+				css: [
+					"/css/projects/AE/trash.css",
+					"/css/projects/AE/index.css",
+				],
 			});
 		} catch (err) {
 			console.error(err);
