@@ -61,7 +61,7 @@
 			</p>
 			<p>
 				<i class="fa-solid fa-subtitles"></i><span>Tiêu đề:
-					{{title}}</span>
+					{{titlePost}}</span>
 			</p>
 			<p>
 				<i class="fa-solid fa-heart"></i><span>Số tim: {{hearts}}</span>
@@ -102,18 +102,30 @@
 			<div class="pics d-grid">
 				{{#each images}}
 					<div class="pic overflow-hidden rounded z-0">
-						<a href="{{this}}" class="text-light py-1 px-2">Tải về</a>
+						<a
+							href="{{this}}"
+							class="text-light py-1 px-2"
+							download="KimiZK-TTDown"
+						>Tải về</a>
 						<img src="{{this}}" alt="" />
 					</div>
 				{{/each}}
 			</div>
 
 			<div class="actions mt-3 d-flex justify-content-around w-100">
-				<a class="btn btn-primary" href="{{downlink}}">
+				<a
+					class="btn btn-primary"
+					href="{{downlink}}"
+					download="KimiZK-TTDown"
+				>
 					<i class="fa-solid fa-download"></i>
 					Video
 				</a>
-				<a class="btn btn-primary" href="{{audio}}">
+				<a
+					class="btn btn-primary"
+					href="{{audio}}"
+					download="KimiZK-TTDown"
+				>
 					<i class="fa-solid fa-download"></i>
 					Audio
 				</a>

@@ -11,7 +11,10 @@ class ToolsController {
 
 	// [GET] /tools/downtik
 	downtik(req, res) {
-		res.render("tools/downtik");
+		res.render("tools/downtik", {
+			css: ["/css/tools/downtik.css"],
+			title: "Tiktok Download",
+		});
 	}
 
 	// [POST] /tools/downtik
@@ -29,7 +32,7 @@ class ToolsController {
 			processedTime: result.processed_time + "s",
 			userID: data.author.unique_id,
 			nickname: data.author.nickname,
-			title: data.title,
+			titlePost: data.title,
 			hearts: data.digg_count,
 			comments: data.comment_count,
 			downloads: data.download_count,
@@ -46,7 +49,9 @@ class ToolsController {
 			  }
 			: {
 					duration: data.duration ? `${data.duration}s` : null,
-					size: data.size ? `${data.size}mb` : null,
+					size: data.size
+						? `${(data.size / 1000000).toFixed(3)}mb`
+						: null,
 					preview: data.ai_dynamic_cover,
 			  };
 

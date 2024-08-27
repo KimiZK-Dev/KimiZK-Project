@@ -8,7 +8,7 @@ import path from "path";
 import sortMW from "./apps/middlewares/sortMW.js";
 import * as handlebarsHelpers from "./helpers/handlebars.js";
 
-const port = 3000 || process.env.PORT;
+const port = 3001 || process.env.PORT;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
