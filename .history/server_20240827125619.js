@@ -1,12 +1,11 @@
-import path from "path";
-import { fileURLToPath } from "url";
 import express from "express";
 import methodOverride from "method-override";
 import { engine } from "express-handlebars";
 import { connect } from "./database/mongoDB.js";
 import router from "./routes/router.js";
+import { fileURLToPath } from "url";
+import path from "path";
 import sortMW from "./apps/middlewares/sortMW.js";
-import JWT from "./apps/middlewares/JWT.js";
 import * as handlebarsHelpers from "./helpers/handlebars.js";
 
 const port = 3001 || process.env.PORT;
@@ -19,16 +18,6 @@ app.use("/tools", express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use((req, res, next) => {
-	if (
-		req.path === "/forms/signin" ||
-		req.path === "/forms/signup" ||
-		req.path === "/forms/noti"
-	) {
-		return next(); // Bỏ qua middleware JWT cho các route này
-	}
-	JWT(req, res, next); // Áp dụng JWT middleware cho các route còn lại
-});
 app.use(sortMW);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));

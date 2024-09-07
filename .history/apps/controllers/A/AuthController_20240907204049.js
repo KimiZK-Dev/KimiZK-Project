@@ -5,23 +5,24 @@ import { mutipleMGToObj } from "../../../database/mongoose.js";
 
 class AuthController {
 	// [GET] /forms/noti
-	noti(req, res, next) {
-		res.render("forms/noti", {
-			title: "Thông báo truy cập!",
+	signin(req, res, next) {
+		res.render("forms/signin", {
+			css: ["/css/forms.css"],
+			title: "Sign In",
 		});
 	}
 	// [GET] /form/login
 	signin(req, res, next) {
 		res.render("forms/signin", {
 			css: ["/css/forms.css"],
-			title: "Đăng Nhập",
+			title: "Sign In",
 		});
 	}
 	// [GET] /forms/signup
 	signup(req, res, next) {
 		res.render("forms/signup", {
 			css: ["/css/forms.css"],
-			title: "Đăng Ký",
+			title: "Sign Up",
 		});
 	}
 

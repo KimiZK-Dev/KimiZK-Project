@@ -4,28 +4,22 @@ import jwt from "jsonwebtoken";
 import { mutipleMGToObj } from "../../../database/mongoose.js";
 
 class AuthController {
-	// [GET] /forms/noti
-	noti(req, res, next) {
-		res.render("forms/noti", {
-			title: "Thông báo truy cập!",
-		});
-	}
 	// [GET] /form/login
 	signin(req, res, next) {
 		res.render("forms/signin", {
 			css: ["/css/forms.css"],
-			title: "Đăng Nhập",
+			title: "Sign In",
 		});
 	}
-	// [GET] /forms/signup
+	// [GET] /form/signup
 	signup(req, res, next) {
 		res.render("forms/signup", {
 			css: ["/css/forms.css"],
-			title: "Đăng Ký",
+			title: "Sign Up",
 		});
 	}
 
-	// [POST] /forms/login
+	// [POST] /form/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
 		try {
@@ -34,26 +28,22 @@ class AuthController {
 			if (!user) {
 				return res
 					.status(404)
-					.send(`Không có người dùng tên: ${userName}`);
+					.send("Không có người dùng tên: ", userName);
 			}
 
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (isMatch) {
-				const token = jwt.sign({ userName }, "JWT_SECRET", {
-					expiresIn: "1h",
-				});
-
-				res.json({ token });
+				return res.send("Password is correct!");
 			} else {
 				return res.status(401).send("Invalid password.");
 			}
-		} catch (e) {
-			console.error("Error:", e);
+		} catch (error) {
+			console.error("Error:", error);
 			return res.status(500).send("Internal server error.");
 		}
 	}
 
-	// [POST] /forms/signup
+	// [POST] /form/signup
 	async signupScript(req, res, next) {
 		try {
 			const hashedPass = await bcrypt.hash(req.body.password, 10);

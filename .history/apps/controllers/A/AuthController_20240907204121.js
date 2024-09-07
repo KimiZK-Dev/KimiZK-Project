@@ -14,14 +14,14 @@ class AuthController {
 	signin(req, res, next) {
 		res.render("forms/signin", {
 			css: ["/css/forms.css"],
-			title: "Đăng Nhập",
+			title: "Sign In",
 		});
 	}
 	// [GET] /forms/signup
 	signup(req, res, next) {
 		res.render("forms/signup", {
 			css: ["/css/forms.css"],
-			title: "Đăng Ký",
+			title: "Sign Up",
 		});
 	}
 

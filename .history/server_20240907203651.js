@@ -20,11 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use((req, res, next) => {
-	if (
-		req.path === "/forms/signin" ||
-		req.path === "/forms/signup" ||
-		req.path === "/forms/noti"
-	) {
+	if (req.path === "/signin" || req.path === "/signup") {
 		return next(); // Bỏ qua middleware JWT cho các route này
 	}
 	JWT(req, res, next); // Áp dụng JWT middleware cho các route còn lại

@@ -4,28 +4,22 @@ import jwt from "jsonwebtoken";
 import { mutipleMGToObj } from "../../../database/mongoose.js";
 
 class AuthController {
-	// [GET] /forms/noti
-	noti(req, res, next) {
-		res.render("forms/noti", {
-			title: "Thông báo truy cập!",
-		});
-	}
 	// [GET] /form/login
 	signin(req, res, next) {
 		res.render("forms/signin", {
 			css: ["/css/forms.css"],
-			title: "Đăng Nhập",
+			title: "Sign In",
 		});
 	}
-	// [GET] /forms/signup
+	// [GET] /form/signup
 	signup(req, res, next) {
 		res.render("forms/signup", {
 			css: ["/css/forms.css"],
-			title: "Đăng Ký",
+			title: "Sign Up",
 		});
 	}
 
-	// [POST] /forms/login
+	// [POST] /form/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
 		try {
@@ -39,10 +33,13 @@ class AuthController {
 
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (isMatch) {
-				const token = jwt.sign({ userName }, "JWT_SECRET", {
-					expiresIn: "1h",
-				});
+				const token = jwt.sign(
+					{ username: user.username },
+					JWT_SECRET,
+					{ expiresIn: "1h" }
+				);
 
+				// Gửi token tới client (có thể lưu vào cookies hoặc local storage)
 				res.json({ token });
 			} else {
 				return res.status(401).send("Invalid password.");
@@ -53,7 +50,7 @@ class AuthController {
 		}
 	}
 
-	// [POST] /forms/signup
+	// [POST] /form/signup
 	async signupScript(req, res, next) {
 		try {
 			const hashedPass = await bcrypt.hash(req.body.password, 10);
