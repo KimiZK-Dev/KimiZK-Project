@@ -52,8 +52,8 @@ class AuthController {
 
 				res.cookie("token", token, {
 					httpOnly: true,
-					secure: process.env.NODE_ENV === "production",
-					maxAge: 3600000,
+					secure: process.env.NODE_ENV === "production", // Nên là 'production' chứ không phải 'development'
+					maxAge: 3600000, // 1 giờ
 				});
 
 				res.status(200).send("Đăng nhập thành công!");

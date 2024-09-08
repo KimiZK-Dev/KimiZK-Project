@@ -25,14 +25,14 @@ class AuthController {
 			css: ["/css/forms.css"],
 			title: "Đăng Ký",
 		});
-	}
-	// [GET] /forms/logout/
+	} // [GET] /forms/logout
 	logout(req, res, next) {
+		// Xóa cookie chứa JWT token
 		res.clearCookie("token");
-		res.redirect("/forms/signin");
+		res.redirect("/forms/signin"); // Chuyển hướng người dùng về trang đăng nhập
 	}
 
-	// [POST] /forms/signin
+	// [POST] /forms/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
 		try {
@@ -53,7 +53,7 @@ class AuthController {
 				res.cookie("token", token, {
 					httpOnly: true,
 					secure: process.env.NODE_ENV === "production",
-					maxAge: 3600000,
+					maxAge: 3600000, // ms
 				});
 
 				res.status(200).send("Đăng nhập thành công!");

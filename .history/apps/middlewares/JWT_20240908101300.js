@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const JWT = (req, res, next) => {
+	// Lấy token từ cookie thay vì header
 	const token = req.cookies.token;
 	if (!token) return res.redirect("/forms/noti");
 

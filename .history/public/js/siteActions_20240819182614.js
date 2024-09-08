@@ -24,8 +24,4 @@ $(document).ready(() => {
 			.animate({ opacity: 0 }, { duration: 300, queue: false })
 			.slideUp(300);
 	});
-
-	$("#logoutBtn").on("click", function () {
-		window.location.href = "/forms/logout";
-	});
 });

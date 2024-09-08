@@ -3,7 +3,8 @@
 
 @font-face {
   font-family: "ProximaSoft";
-  src: url("../assets/fonts/proxima_soft_bold.otf") format("opentype"); }
+  src: url("../assets/fonts/proxima_soft_bold.otf") format("opentype");
+  font-display: swap; }
 
 * {
   font-family: "ProximaSoft", sans-serif;

@@ -15,7 +15,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cookieParser());
 app.use(methodOverride("_method"));
 app.use("/tools", express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,6 +31,7 @@ app.use((req, res, next) => {
 	JWT(req, res, next);
 });
 app.use(sortMW);
+app.use(cookieParser());
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
 app.engine(

@@ -22,11 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use((req, res, next) => {
-	if (
-		req.path === "/forms/signin" ||
-		req.path === "/forms/signup" ||
-		req.path === "/forms/noti"
-	) {
+	if (req.path === "/forms/") {
 		return next();
 	}
 	JWT(req, res, next);

@@ -1,8 +1,6 @@
 import userDB from "../../../database/models/userDB.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
 import { mutipleMGToObj } from "../../../database/mongoose.js";
 
 class AuthController {
@@ -26,15 +24,11 @@ class AuthController {
 			title: "Đăng Ký",
 		});
 	}
-	// [GET] /forms/logout/
-	logout(req, res, next) {
-		res.clearCookie("token");
-		res.redirect("/forms/signin");
-	}
 
-	// [POST] /forms/signin
+	// [POST] /forms/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
+		console.log(process.env.JWT_SECRET);
 		try {
 			const user = await userDB.findOne({ userName });
 
@@ -50,10 +44,11 @@ class AuthController {
 					expiresIn: "1h",
 				});
 
+				// Lưu JWT token vào cookie với httpOnly
 				res.cookie("token", token, {
-					httpOnly: true,
-					secure: process.env.NODE_ENV === "production",
-					maxAge: 3600000,
+					httpOnly: true, // Ngăn chặn truy cập từ JavaScript phía client
+					secure: process.env.NODE_ENV === "production", // Chỉ gửi cookie qua HTTPS nếu ở môi trường production
+					maxAge: 3600000, // Token có hiệu lực trong 1 giờ (1h = 3600000ms)
 				});
 
 				res.status(200).send("Đăng nhập thành công!");

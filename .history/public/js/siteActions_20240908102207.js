@@ -26,6 +26,6 @@ $(document).ready(() => {
 	});
 
 	$("#logoutBtn").on("click", function () {
-		window.location.href = "/forms/logout";
+		window.location.href = "/forms/logout"; // Chuyển hướng đến route /forms/logout
 	});
 });

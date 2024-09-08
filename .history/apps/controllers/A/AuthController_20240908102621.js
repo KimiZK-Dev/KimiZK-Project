@@ -32,7 +32,7 @@ class AuthController {
 		res.redirect("/forms/signin");
 	}
 
-	// [POST] /forms/signin
+	// [POST] /forms/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
 		try {

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const JWT = (req, res, next) => {
-	const token = req.cookies.token;
+	const token = req.headers["authorization"];
 	if (!token) return res.redirect("/forms/noti");
 
 	jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {

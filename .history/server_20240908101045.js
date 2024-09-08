@@ -3,7 +3,6 @@ import { fileURLToPath } from "url";
 import express from "express";
 import methodOverride from "method-override";
 import { engine } from "express-handlebars";
-import cookieParser from "cookie-parser";
 import { connect } from "./database/mongoDB.js";
 import router from "./routes/router.js";
 import sortMW from "./apps/middlewares/sortMW.js";
@@ -15,7 +14,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cookieParser());
 app.use(methodOverride("_method"));
 app.use("/tools", express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -27,9 +25,9 @@ app.use((req, res, next) => {
 		req.path === "/forms/signup" ||
 		req.path === "/forms/noti"
 	) {
-		return next();
+		return next(); // Bỏ qua middleware JWT cho các route này
 	}
-	JWT(req, res, next);
+	JWT(req, res, next); // Áp dụng JWT middleware cho các route còn lại
 });
 app.use(sortMW);
 app.set("view engine", "hbs");

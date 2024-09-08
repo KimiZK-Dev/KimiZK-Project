@@ -32,7 +32,7 @@ class AuthController {
 		res.redirect("/forms/signin");
 	}
 
-	// [POST] /forms/signin
+	// [POST] /forms/login
 	async signinScript(req, res, next) {
 		const { userName, password } = req.body;
 		try {
@@ -50,10 +50,11 @@ class AuthController {
 					expiresIn: "1h",
 				});
 
+				// Lưu JWT token vào cookie với httpOnly
 				res.cookie("token", token, {
-					httpOnly: true,
-					secure: process.env.NODE_ENV === "production",
-					maxAge: 3600000,
+					httpOnly: true, // Ngăn chặn truy cập từ JavaScript phía client
+					secure: process.env.NODE_ENV === "production", // Chỉ gửi cookie qua HTTPS nếu ở môi trường production
+					maxAge: 3600000, // Token có hiệu lực trong 1 giờ
 				});
 
 				res.status(200).send("Đăng nhập thành công!");

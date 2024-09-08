@@ -2,9 +2,9 @@
 @import "webkits";
 
 @font-face {
-	font-family: "ProximaSoft";
-	src: url("../assets/fonts/proxima_soft_bold.otf") format("opentype");
-	font-display: swap;
+	font-family: "Proxima Soft"; /* Đặt tên cho kiểu font để có thể sử dụng trong CSS */
+	src: url("../assets/fonts/proxima_soft_bold.otf") format("opentype"); /* Đường dẫn đến tệp font và định dạng font */
+	font-display: swap; /* Cách trình duyệt hiển thị font trong khi tải */
 }
 
 * {
